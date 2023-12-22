@@ -1,0 +1,193 @@
+[ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 1; ]
+using Toybox.Time.Gregorian as :Calendar;
+[ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 2; ]
+import Toybox.Graphics;
+[ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 3; ]
+import Toybox.Lang;
+[ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 4; ]
+import Toybox.System;
+[ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 5; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 7; ]
+class PrimeiraWatchFaceView extends WatchUi.WatchFace{
+    [ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 7; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 9; ]
+    function initialize() as Void {
+C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_9_26_start:
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 10 8 ]
+        %tmp.2 = getv ? :WatchFace;
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_9_26_stop:
+    }
+    [ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 14; ]
+    function onLayout(dc as Dc) as Void {
+C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_14_40_start:
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 15 8 ]
+        %tmp.1 = self;
+        %tmp.2 = getv function %tmp.1 :setLayout;
+        %tmp.4 = getv ? :Rez;
+        %tmp.5 = getv %tmp.4 :Layouts;
+        %tmp.6 = getv function %tmp.5 :WatchFace;
+        %tmp.8 = lgetv %dc;
+        %tmp.9 = invoke %tmp.5 %tmp.6(%tmp.8);
+        invoke %tmp.1 %tmp.2(%tmp.9);
+C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_14_40_stop:
+    }
+    [ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 21; ]
+    function onShow() as Void {
+    }
+    [ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 25; ]
+    function onUpdate(dc as Dc) as Void {
+C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_start:
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 27 8 ]
+        [ "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_start" "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_stop" ]
+        %clockTime.1 = local;
+        %tmp.1 = getm $.Toybox.System;
+        %tmp.2 = getv function %tmp.1 :getClockTime;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %clockTime.1 %tmp.3;
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 28 8 ]
+        [ "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_start" "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_stop" ]
+        %timeString.2 = local;
+        %tmp.4 = getm $.Toybox.Lang;
+        %tmp.5 = getv function %tmp.4 :format;
+        %tmp.6 = "$1$:$2$";
+        %tmp.7 = newa 2;
+        %tmp.8 = lgetv %clockTime.1;
+        %tmp.9 = getv %tmp.8 :hour;
+        %tmp.10 = dup %tmp.7;
+        %tmp.11 = aputv %tmp.10 0 %tmp.9;
+        %tmp.12 = lgetv %clockTime.1;
+        %tmp.13 = getv %tmp.12 :min;
+        %tmp.14 = getv function %tmp.13 :format;
+        %tmp.15 = "%02d";
+        %tmp.16 = invoke %tmp.13 %tmp.14(%tmp.15);
+        %tmp.17 = dup %tmp.11;
+        %tmp.18 = aputv %tmp.17 1 %tmp.16;
+        %tmp.19 = invoke %tmp.4 %tmp.5(%tmp.6, %tmp.18);
+        lputv %timeString.2 %tmp.19;
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 29 8 ]
+        %tmp.20 = self;
+        %tmp.21 = getv function %tmp.20 :updateDisplayObject;
+        %tmp.22 = "TimeLabel";
+        %tmp.24 = lgetv %timeString.2;
+        invoke %tmp.20 %tmp.21(%tmp.22, %tmp.24);
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 32 8 ]
+        [ "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_start" "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_stop" ]
+        %pwr.3 = local;
+        %tmp.25 = getm $.Toybox.System;
+        %tmp.26 = getv function %tmp.25 :getSystemStats;
+        %tmp.27 = invoke %tmp.25 %tmp.26();
+        %tmp.28 = getv %tmp.27 :battery;
+        lputv %pwr.3 %tmp.28;
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 33 8 ]
+        [ "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_start" "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_stop" ]
+        %batStr.4 = local;
+        %tmp.29 = getm $.Toybox.Lang;
+        %tmp.30 = getv function %tmp.29 :format;
+        %tmp.31 = "$1$%";
+        %tmp.32 = newa 1;
+        %tmp.33 = lgetv %pwr.3;
+        %tmp.34 = getv function %tmp.33 :format;
+        %tmp.35 = "%2d";
+        %tmp.36 = invoke %tmp.33 %tmp.34(%tmp.35);
+        %tmp.37 = dup %tmp.32;
+        %tmp.38 = aputv %tmp.37 0 %tmp.36;
+        %tmp.39 = invoke %tmp.29 %tmp.30(%tmp.31, %tmp.38);
+        lputv %batStr.4 %tmp.39;
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 34 8 ]
+        %tmp.40 = self;
+        %tmp.41 = getv function %tmp.40 :updateDisplayObject;
+        %tmp.42 = "BatteryPercentageLabel";
+        %tmp.44 = lgetv %batStr.4;
+        invoke %tmp.40 %tmp.41(%tmp.42, %tmp.44);
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 41 8 ]
+        [ "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_start" "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_stop" ]
+        %now.5 = local;
+        %tmp.46 = getv ? :Time;
+        %tmp.47 = getv function %tmp.46 :now;
+        %tmp.48 = invoke %tmp.46 %tmp.47();
+        lputv %now.5 %tmp.48;
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 42 8 ]
+        [ "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_start" "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_stop" ]
+        %info.6 = local;
+        %tmp.49 = getm $.Toybox.Time.Gregorian;
+        %tmp.50 = getv function %tmp.49 :info;
+        %tmp.52 = lgetv %now.5;
+        %tmp.54 = getv ? :Time;
+        %tmp.55 = getv %tmp.54 :FORMAT_LONG;
+        %tmp.56 = invoke %tmp.49 %tmp.50(%tmp.52, %tmp.55);
+        lputv %info.6 %tmp.56;
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 43 8 ]
+        [ "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_start" "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_stop" ]
+        %dateString.7 = local;
+        %tmp.57 = getm $.Toybox.Lang;
+        %tmp.58 = getv function %tmp.57 :format;
+        %tmp.59 = "$1$ $2$ $3$";
+        %tmp.60 = newa 3;
+        %tmp.61 = lgetv %info.6;
+        %tmp.62 = getv %tmp.61 :day_of_week;
+        %tmp.63 = dup %tmp.60;
+        %tmp.64 = aputv %tmp.63 0 %tmp.62;
+        %tmp.65 = lgetv %info.6;
+        %tmp.66 = getv %tmp.65 :day;
+        %tmp.67 = dup %tmp.64;
+        %tmp.68 = aputv %tmp.67 1 %tmp.66;
+        %tmp.69 = lgetv %info.6;
+        %tmp.70 = getv %tmp.69 :month;
+        %tmp.71 = dup %tmp.68;
+        %tmp.72 = aputv %tmp.71 2 %tmp.70;
+        %tmp.73 = invoke %tmp.57 %tmp.58(%tmp.59, %tmp.72);
+        lputv %dateString.7 %tmp.73;
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 44 8 ]
+        %tmp.74 = self;
+        %tmp.75 = getv function %tmp.74 :updateDisplayObject;
+        %tmp.76 = "DateLabel";
+        %tmp.78 = lgetv %dateString.7;
+        invoke %tmp.74 %tmp.75(%tmp.76, %tmp.78);
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 46 8 ]
+        %tmp.80 = getv ? :View;
+        %tmp.81 = getv function %tmp.80 :onUpdate;
+        %tmp.83 = lgetv %dc;
+        invoke %tmp.80 %tmp.81(%tmp.83);
+C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_25_40_stop:
+    }
+    [ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 52; ]
+    function onHide() as Void {
+    }
+    [ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 56; ]
+    function onExitSleep() as Void {
+    }
+    [ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 60; ]
+    function onEnterSleep() as Void {
+    }
+    [ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 64; ]
+    function updateDisplayObject(updateObject, updateText) {
+C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_64_54_start:
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 65 2 ]
+        [ "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_64_54_start" "C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_64_54_stop" ]
+        %_viewObject.1 = local;
+        %tmp.2 = getv ? :View;
+        %tmp.3 = getv function %tmp.2 :findDrawableById;
+        %tmp.5 = lgetv %updateObject;
+        %tmp.6 = invoke %tmp.2 %tmp.3(%tmp.5);
+        %tmp.7 = as %tmp.6 Text;
+        lputv %_viewObject.1 %tmp.7;
+[ "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc" 66 2 ]
+        %tmp.8 = lgetv %_viewObject.1;
+        %tmp.9 = getv function %tmp.8 :setText;
+        %tmp.11 = lgetv %updateText;
+        invoke %tmp.8 %tmp.9(%tmp.11);
+C_Users_mrnascimento_Desktop_Garmin_WatchFace_PrimeiraWatchFace_source_PrimeiraWatchFaceView_mc_64_54_stop:
+    }
+}
+[ @file = "C:\Users\mrnascimento\Desktop\Garmin WatchFace\PrimeiraWatchFace\source\PrimeiraWatchFaceView.mc"; @line = 1; ]
+<init> {
+}
